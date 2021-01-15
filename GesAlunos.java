@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 public class GesAlunos {
     public static void main(String[] args) {
          // instanciar alunos com construtor que incializa atributos/campos
@@ -16,13 +17,62 @@ public class GesAlunos {
         alunos.add(aluno4);
         alunos.add(aluno5);
 
-        //criar instancia da classe Turma
-        Turma turmaTIS2T1 = new Turma(2,"TIS-2-Turma1",alunos);
+        //mostrar todos os alunos
+        printNomes(alunos);
 
-        //criar lista de turmas
-        ArrayList<Turma> turmas = new ArrayList<Turma>();
+        //contar os alunos menores de idade
+        System.out.println("O número de menores da turma é: " + contaMenores1(alunos));
+        contaMenores2(alunos);
 
-        //adicionar a turma à lista de turmas
-        turmas.add(turmaTIS2T1);
+        //consultar informações de um aluno a partir do seu num CC
+        Scanner in = new Scanner(System.in);
+        System.out.print("Número do CC: ");
+        int numCC = in.nextInt();
+        consultaAluno(numCC,alunos);
+        in.close();
+    }
+
+    public static void consultaAluno(int numCC, ArrayList<Aluno> alunos){
+        boolean encontrou = false;
+        for(int i=0; i<alunos.size(); i++){
+            if(numCC == alunos.get(i).getCC()){
+                encontrou = true;
+                System.out.println(alunos.get(i).getNome());
+                System.out.println(alunos.get(i).getIdade());
+                System.out.println(alunos.get(i).getMorada());
+                System.out.println(alunos.get(i).getCC());
+                System.out.println(alunos.get(i).getEmail());
+                System.out.println(alunos.get(i).getMediaNotas());
+            }
+        }
+        if(encontrou==false){
+            System.out.println("Aluno não encontrado...");
+        }
+    }
+
+    public static void printNomes(ArrayList<Aluno> alunos){
+        for(int i=0 ; i < alunos.size() ; i++){
+            System.out.println(alunos.get(i).getNome());
+        }
+    }
+
+    public static int contaMenores1(ArrayList<Aluno> alunos){
+        int contagemMenores=0;
+        for(int i=0; i<alunos.size(); i++){
+            if(alunos.get(i).getIdade() < 18) {
+                contagemMenores++;
+            }
+        }
+        return contagemMenores;
+    }
+
+    public static void contaMenores2(ArrayList<Aluno> alunos){
+        int contagemMenores=0;
+        for(int i=0; i<alunos.size(); i++){
+            if(alunos.get(i).getIdade() < 18) {
+                contagemMenores++;
+            }
+        }
+        System.out.println("O número de menores da turma é: " + contagemMenores);
     }
 }

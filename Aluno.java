@@ -20,8 +20,6 @@ public class Aluno {
         this.mediaNotas=mediaNotas;
     }
 
-
-
     //setters ou métodos de set
     public void setNome(String nome){
         this.nome=nome;
