@@ -27,12 +27,15 @@ public class GesTestes {
         //alterar o resultado do teste
         System.out.println("LISTA ANTES DA ALTERAÇÃO DO RESULTADO");
         printLista(pessoasTestadas);
-        alteraResultado(pessoasTestadas, 223456789);
+        alteraResultado(pessoasTestadas, 223456789, true);
+        alteraResultado(pessoasTestadas, 423456789, true);
+        alteraResultado(pessoasTestadas, 623456789, true);
         System.out.println("LISTA DEPOIS DA ALTERAÇÃO DO RESULTADO");
         printLista(pessoasTestadas);
 
         //pessoas infetadas e média de idades dos infetados
-  
+        System.out.println("LISTA DE INFETADOS E MÉDIA DE IDADES");
+        printNomesInfetados(pessoasTestadas);
     }
 
     //método para contar as pessoas de risco
@@ -46,18 +49,27 @@ public class GesTestes {
         return contagem;
     }
 
-    public static void alteraResultado(ArrayList<Pessoa> pessoasTestadas, int cc){
+    public static void alteraResultado(ArrayList<Pessoa> pessoasTestadas, int cc, boolean resultado){
         for(int i=0; i<pessoasTestadas.size(); i++){
             if(pessoasTestadas.get(i).getCcPessoa() == cc){
-                pessoasTestadas.get(i).setResTestePessoa(true);
+                pessoasTestadas.get(i).setResTestePessoa(resultado);
                 break;
             }
         }   
     }
 
     public static void printNomesInfetados(ArrayList<Pessoa> pessoasTestadas){
-
-
+        int contador=0;
+        int somaIdades=0;
+        for(Pessoa p : pessoasTestadas){
+            if(p.getResTestePessoa() == true){
+                System.out.println(p.getNomePessoa() + " | " + p.getIdadePessoa());
+                contador++;
+                somaIdades+=p.getIdadePessoa();
+            }
+        }
+        double media = (double) somaIdades / contador;
+        System.out.println("Média das idades dos infetados: " + media);
     }
 
     public static void printLista(ArrayList<Pessoa> pessoasTestadas){
