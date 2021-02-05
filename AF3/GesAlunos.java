@@ -1,7 +1,6 @@
 package AF3;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GesAlunos {
     public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package AF4;
 
 public class Operacao {
     //atributos
@@ -36,17 +37,19 @@ public class Operacao {
 
     //método para as operações
     public double resultado(){
+        double res=0;
         if(this.operacao.equals("+")){
-            return this.num1 + this.num2;
+            res = this.num1 + this.num2;
         }
-        else if(this.operacao.equals("-")){
-            return this.num1 - this.num2;
+        if(this.operacao.equals("-")){
+            res = this.num1 - this.num2;
         }
-        else if(this.operacao.equals("*")){
-            return this.num1 * this.num2;
+        if(this.operacao.equals("*")){
+            res =  this.num1 * this.num2;
         }
-        else {
-            return (double) this.num1 / this.num2;
+        if(this.operacao.equals("/")) {
+            res = (double) this.num1 / this.num2;
         }
+        return res;
     }
 }
